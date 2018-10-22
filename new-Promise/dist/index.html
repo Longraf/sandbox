@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta HTTP-EQUIV="Expires" CONTENT="0">
+    <meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <meta http-equiv="Cache-Control" content="private">
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+    <title>new Promise and console</title>
+    <link rel="stylesheet" href="../dist/style.min.css">
+</head>
+<body>
+
+    <script>
+        var promise = new Promise((resolve, reject) => {
+            resolve(console.log('Uhoo-hooo-hoooo'));
+            setTimeout(() => {
+                reject(new Error("время вышло!"));
+            }, 1000);
+
+        });
+
+        promise
+            .then(
+                result => console.log("Fulfilled: " + result),
+                error => console.log("Rejected: " + error.message) // Rejected: время вышло!
+            );
+        /*
+        function asyncFunc() {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => resolve('DONE'), 1000);
+                console.log('start');
+            });
+        }
+        asyncFunc()
+            .then(x => console.log('Result: ' + x));
+        */
+
+        // output 'val'-раз integer numbers
+        var numbers = (val, min = 1) => {
+            let rezult = [];
+            for (let i = 0; i < val; i++) {
+                rezult.push((min + i) * (min + i));
+            }
+            return rezult
+        };
+        //console.log(roots);
+        // Work with map and console.table
+        var numbersDual = numbers(11, 4); // выводит от 2 до 11
+        var roots = numbersDual.map(Math.sqrt);
+        //console.log(rootQuad);
+        let rootQuad = roots.map((a) => { // возводит в 4-ю степень весь массив
+            return Math.pow(a, 4);
+        });
+        let summArr = numbersDual.reduce((first, second) => first + ' + ' + second);
+        let a = [numbersDual, roots, rootQuad];
+        //console.log(' ' + summArr + ' = ' + numbersDual.reduce((first, second) => first +  second));
+        console.log ( `%c ${summArr} =%c ${numbersDual.reduce((first, second) => first +  second)}`, ``, `color: crimson; font-size: 15px; font-weight: bold;`);
+        // console.table(a); // output in table form
+        var styles = [
+            'background: red',
+            'background: orange',
+            'background: gold',
+            'background: yellowgreen',
+            'background: skyblue',
+            'background: steelblue',
+            'background: darkviolet'
+        ];
+
+        let myFirstPromise = new Promise((resolve, reject) => {
+            // Мы вызываем resolve(...), когда асинхронная операция завершилась успешно, и reject(...), когда она не удалась.
+            // В этом примере мы используем setTimeout(...), чтобы симулировать асинхронный код.
+            // В реальности вы, скорее всего, будете использовать XHR, HTML5 API или что-то подобное.
+            setTimeout(() => {
+                resolve("Ура! Всё прошло хорошо!"); // Ура! Всё прошло хорошо!
+            }, 250);
+        });
+
+        myFirstPromise.then((successMessage) => {
+            // successMessage - это что угодно, что мы передали в функцию resolve(...) выше.
+            // Это необязательно строка, но если это всего лишь сообщение об успешном завершении, это наверняка будет она.
+            console.log("Ура! " + successMessage);
+        });
+
+        /*
+        console.log ( '%c R %c A %c I %c N %c B %c O %c W ',
+            styles[0], styles[1], styles[2], styles[3],
+            styles[4], styles[5], styles[6] );
+
+        Promise.resolve([1,2,3,4]).then(function(values) {
+            console.log(values);
+        });
+        */
+
+        /*
+        // Вариант с Promise
+        function getJSON(){
+            // Чтобы блокировать функцию, создаем Promise
+            return new Promise( function(resolve) {
+                axios.get('https://tutorialzine.com/misc/files/example.json')
+                    .then( function(json) {
+                        // Ответ от сервера доступен в блоке .then
+                        // Возвращаем результат с помощью функции resolve
+                        resolve(json);
+                    });
+            });}
+        // Вариант Async/Await
+        // Ключевое слово async автоматически создаст новый Promise и возвратит его
+        async function getJSONAsync(){
+            // Ключевое слово await позволяет нам не писать блок .then
+            let jjson = await axios.get('https://tutorialzine.com/misc/files/example.json');
+            // Ответ на GET запрос сохранен в переменной json
+            // Возвращаем его как в обычной синхронной функции
+            return jjson;
+        }
+        getJSONAsync().then( function(result) {
+            // Сделать что-нибудь с результатом.
+        });
+        */
+        var promise = new Promise(function(resolve, reject) {
+            // здесь вытворяй что угодно, если хочешь асинхронно, потом…
+            if (true/* ..если всё закончилось успехом */) {
+                setTimeout(() => resolve(console.log('DONE2')), 1000);
+            }
+            else {
+                setTimeout(() => reject(console.log(Error("Сломалось"))), 700);
+            }
+        });
+
+        let user = '{ "name": "Вася", "age": 35, "isAdmin": false, "friends": [0,1,2,3] }';
+
+        let user2 = {
+            name: "Вася", age: 35, isAdmin: false, friends: [0,1,2,3] };
+        user = JSON.parse(user);
+        console.log(user);
+
+        /*
+        for (item in user) {
+            console.log();
+            // if (Array.isArray(user[item])) {
+            //     for (i in user[item]) {
+            //             console.log(`${item} - ${i}`);
+            //         }
+            // } else {
+                console.log(`${item} - ${user[item]}`);
+            //}
+        }
+        */
+        // console.log(user.friends);
+        // console.log(Array.isArray(user.friends));
+
+        let load = async () => {
+            let a = await Promise.resolve(4);
+            let b = await Promise.resolve(11);
+            let c = await Promise.resolve(15);
+            let d = await Promise.resolve(20);
+            return a + b + c + d;
+        };
+        //console.log(load().then(value => console.log(value)));
+        load().then(value => console.log(value)); // 15
+        var event = {
+                     one     : "first - start",
+                     number  : 123,
+                     title   : "Конференция",
+                     date    : "сегодня",
+                     isAdmin : false
+        };
+
+
+
+
+        //console.log(event);
+        //console.log( JSON.stringify(event, null, '\t') );
+        //console.log(JSON.parse( JSON.stringify(event) ));
+        //console.log(JSON.stringify(JSON.parse(JSON.stringify(event))));
+        //console.log(JSON.parse(JSON.stringify(JSON.parse(JSON.stringify(event)))));
+        //console.log(JSON.stringify(JSON.parse( JSON.stringify(JSON.parse(JSON.stringify(event))) )));
+        //console.log(JSON.parse(JSON.stringify(JSON.parse(JSON.stringify(JSON.parse(JSON.stringify(event)))))));
+        //console.log(JSON.stringify(JSON.parse(JSON.stringify(JSON.parse(JSON.stringify(JSON.parse(JSON.stringify(event))))))));
+
+
+        /*
+        let sucsess = 'Win';
+        let luse    = 'Error';
+        var promise = new Promise(function(resolve, reject) {
+            // maybe do some async stuff in here
+            if (false) {
+                resolve(console.log(sucsess));
+            } else {
+                reject(console.log(luse));
+            }
+        });
+        */
+        /*
+        function delay(milliseconds) {
+            return function(result) {
+                return new Promise(function(resolve, reject) {
+                    setTimeout(function() {
+                        resolve(result);
+                    }, milliseconds);
+                });
+            };
+        };
+        delay(1000)('hello').then(function(result) {
+            console.log(result);
+        });
+        */
+
+        let numbLet = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, '-w9'];
+        console.log(numbLet.includes('9'), 'test include');
+        let map = numbLet.map(function (val) {
+            return val
+        });
+        let reduce = map.reduce((i1, i2) => i1 + i2);
+        console.log('map func', map);
+        console.log('redice fimc', reduce);
+        let filter = numbLet.filter(function(number) {
+            return typeof number === "string" || number % 3 === 0;
+        });
+        console.log(filter, 'func filter');
+
+    </script>
+</body>
+</html>

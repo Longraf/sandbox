@@ -1,0 +1,1 @@
+let Test = require('./test');

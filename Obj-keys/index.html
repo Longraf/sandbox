@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        class Animal {
+            constructor({
+                            name        = null,
+                            age         = null,
+                            height      = null,
+                            isPredator  = null,
+                        }) {
+                this.name       = name;
+                this.age        = age;
+                this.height     = height;
+                this.height     = this.height + 'cm';
+                this.isPredator = isPredator;
+                this.say        = () => {
+                    console.log(`Меня зовут ${this.name}, Мой возраст ${this.age}`)
+                };
+            }
+        }
+        let bear = new Animal({
+            age         : 5,
+            name        : 'Toptigin',
+            height      : 50,
+            isPredator  : true,
+        });
+        bear.say();
+        for (let item in bear) {
+            bear[item];
+        }
+        console.log(Object.keys(bear));
+        console.log(Object.getOwnPropertyNames(bear));
+
+        function getKeyByValue(object, value) {
+            return Object.keys(object).find(key => object[key] === value);
+        }
+        console.log(getKeyByValue(bear, true));
+        let tasks = [
+            {
+                'name'     : 'Write for Envato Tuts+',
+                'duration' : 120
+            },
+            {
+                'name'     : 'Work out',
+                'duration' : 60
+            },
+            {
+                'name'     : 'Procrastinate on Duolingo',
+                'duration' : 240
+            },
+        ];
+        console.log(tasks.map((item, index, array) => item.name + '   '));
+        console.log(tasks.filter((i) => i.duration > 100));
+        // console.log(tasks.reduce((itemFirst, item2) => {
+        //     return itemFirst.duration + item2.duration
+        // }, 0));
+        // for (const [index, elem] of tasks.entries()) {
+        //     console.log(`index = ${index}, elem = `, elem);
+        // }
+        // console.log(Object.entries(tasks));
+        // console.log(tasks.entries());
+        function resolveAfter2Seconds(x) {
+            return new Promise(resolve => {
+                setTimeout(function() {
+                    return resolve(x);
+                }, 1000);
+            });
+        }
+
+        async function add1(x) {
+            const a = await resolveAfter2Seconds(20);
+            const b = await resolveAfter2Seconds(30);
+            return x + a + b;
+        }
+        add1(10).then(v => {
+            console.log(v);  // prints 60 after 4 seconds.
+        });
+        async function add2(x) {
+            const a = resolveAfter2Seconds(20);
+            const b = resolveAfter2Seconds(30);
+            return x + await a + await b;
+        }
+
+        add2(10).then(v => {
+            console.log(v);  // prints 60 after 2 seconds.
+        });
+    </script>
+</body>
+</html>

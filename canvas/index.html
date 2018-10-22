@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas</title>
+</head>
+<body>
+    <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+        <!--<path d="M0 0 Q 100 200 200 0" stroke="black" fill="black"/>-->
+        <path d="M10 80  Q  52 200,  95 80  T 180 80  L 180 80 Q 157 40,  95 80  T 10 80 " stroke="black" fill="rgb(100,200,250)"/>
+
+        <!--<path d="M180 80 " stroke="black" fill="rgb(100,200,250)"/>-->
+
+        <!--<path d="M10 80 C 40 140, 65 10, 95 80 S 150 0, 180 80 " stroke="black" fill="rgb(100,200,250)"/>-->
+
+        <!--<path d=" stroke="black" fill="rgb(100,200,250)"/>-->
+
+        <!--&lt;!&ndash; Точки &ndash;&gt;-->
+        <circle cx="10" cy="80" r="2" fill="red"/>
+        <circle cx="52.5" cy="200" r="2" fill="red"/>
+        <!--<circle cx="95" cy="80" r="2" fill="red"/>-->
+        <circle cx="95" cy="80" r="2" fill="red"/>
+        <circle cx="180" cy="80" r="2" fill="red"/>
+
+
+        <!--<path d="M80 80-->
+           <!--A 45 45, 1, 1, 0, 125 125-->
+           <!--L 125 80 Z" fill="green"/>-->
+        <!--<path d="M230 80-->
+           <!--A 45 45, 0, 1, 1, 275 125-->
+           <!--L 275 80 Z" fill="red"/>-->
+        <!--<path d="M80 230-->
+           <!--A 45 45, 0, 0, 1, 125 275-->
+           <!--L 125 230 Z" fill="purple"/>-->
+        <!--<path d="M230 230-->
+           <!--A 45 45, 0, 1, 1, 275 275-->
+           <!--L 275 230 Z" fill="blue"/>-->
+    </svg>
+    <canvas id="smile" width="200" height="200">
+        <p>Ваш браузер не поддерживает рисование.</p>
+    </canvas>
+    <script>
+        // window.onload = function() {
+        //     var drawingCanvas = document.getElementById('smile');
+        //     if(drawingCanvas && drawingCanvas.getContext) {
+        //         var context = drawingCanvas.getContext('2d');
+        //         Рисуем окружность
+        //         context.strokeStyle = "#000";
+        //         context.fillStyle = "#fc0";
+        //         context.beginPath();
+        //         context.arc(100,100,50,0,Math.PI*2,true);
+        //         context.closePath();
+        //         context.stroke();
+        //         context.fill();
+        //         Рисуем левый глаз
+        //         context.fillStyle = "#fff";
+        //         context.beginPath();
+        //         context.arc(84,90,8,0,Math.PI*2,true);
+        //         context.closePath();
+        //         context.stroke();
+        //         context.fill();
+        //         // Рисуем правый глаз
+        //         context.beginPath();
+        //         context.arc(116,90,8,0,Math.PI*2,true);
+        //         context.closePath();
+        //         context.stroke();
+        //         context.fill();
+        //         //Рисуем рот
+        //         context.beginPath();
+        //         context.moveTo(70,115);
+        //         context.quadraticCurveTo(100,130,130,115);
+        //         context.quadraticCurveTo(100,150,70,115);
+        //         context.closePath();
+        //         context.stroke();
+        //         context.fill();
+        //     }
+        // }
+    </script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<canvas id='draw' width='300' height='200' style='border:1px solid'>Вы видите это сообщение,
+    потому что Ваш браузер не поддерживает canvas.</canvas>
+<script type='text/javascript'>
+    var canvas=document.getElementById("draw")
+    var x=canvas.getContext("2d");
+    x.fillStyle="orange";   // Оранжевый плюс (на самом деле квадрат с вырезаными краями
+    x.fillRect(70,10,55,55);
+
+    x.strokeRect(70,10,55,55);
+
+    x.strokeRect(68,9,57,57);
+
+    x.clearRect(105,45,20,20);
+    x.clearRect(105,10,20,20);
+    x.clearRect(70,10,20,20);
+    x.clearRect(70,45,20,20);
+
+    x.fillStyle="red"; // Red circle
+    var x1=(Math.PI/180)*0;
+
+    var x2=(Math.PI/180)*360;
+    x.beginPath();
+    x.arc(270,150,10,x1,x2);
+
+    x.moveTo(100,100);
+    x.fill();
+
+
+    x.fillStyle="green";  // Зелёный квадрат c дыркой
+    x.fillRect(0,0,65,65);
+    x.clearRect(20,20,20,20);
+
+    x.fillStyle='yellow'; // yellow SAW
+    x.beginPath();
+    x.moveTo(130, 0);
+    x.lineTo(300,50);
+    x.lineTo(260,100);
+    x.lineTo(260,60);
+
+    x.lineTo(230,90);
+    x.lineTo(230,50);
+
+    x.lineTo(200,80);
+    x.lineTo(200,40);
+
+    x.lineTo(170,70);
+    x.lineTo(170,30);
+
+    x.lineTo(130,60);
+    x.lineTo(130,20);
+    x.closePath();
+    x.fill();
+
+    x.beginPath(); // Линия
+    x.moveTo(290,125);
+    x.lineWidth=17;
+    x.lineCap='round';
+    x.lineJoin='round';
+    x.lineTo(290,175);
+    x.lineTo(250,185);
+    x.lineTo(200,165);
+    x.lineTo(250,125);
+    x.stroke();
+
+    x.fillStyle = 'lightseagreen';
+    x.shadowOffsetX=2; //тень
+    x.shadowOffsetY=2;
+    x.shadowBlur=5;
+    x.shadowColor='rgba(200,150,0,0.4)';
+    x.font='11px Verdana';
+    x.fillText("Теперь Вы можете отображать", 125, 15);
+    x.font='18px Arial';
+    x.fillStyle='#007439';
+    x.fillText("произвольный текст", 127, 40);
+    x.fillStyle='#a67800';
+    x.font='16px Comic Sans MS';
+    x.fillText("в элементе canvas.", 130, 70);
+
+
+    var grad = x.createLinearGradient(145,80,145,190); //Градиент
+    x.shadowOffsetX=5; //тень
+    x.shadowOffsetY=5;
+    x.shadowBlur=5;
+    x.shadowColor='rgba(0,0,0,0.8)';
+    /* Добавляем точки цветового перехода */
+    grad.addColorStop(0.0,'#d2006b');
+    grad.addColorStop(0.5,'#00a779');
+    grad.addColorStop(1.0,'#ffe800');
+    /* Устанавливаем получившийся градиент как свойство заливки */
+    x.fillStyle=grad;
+    /* Рисуем фигиру, к которой будет применен созданный градиент */
+    x.fillRect(115,80,60,110);
+
+</script>
+</body>
+</html>
+
+<body>
+
+</body>
+</html>
