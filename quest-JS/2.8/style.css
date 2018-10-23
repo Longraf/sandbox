@@ -1,0 +1,22 @@
+input {
+    width: 400px;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    margin-bottom: 60px;
+    padding: 0;
+    border: 1px solid grey;
+    width: 402px;
+}
+li {
+    margin: 0;
+    padding: 0;
+}
+li:hover {
+    background: #FEDC6E;
+}
+p {
+    margin-top: 3px;
+    margin-bottom: 1px;
+}

@@ -1,0 +1,29 @@
+
+#divForm .input{
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid orange;
+    width: 300px;
+}
+#divForm .divInput{
+    position: relative;
+}
+#divForm .xspan {
+    content: "X";
+    position: absolute;
+    top: 8px;
+    left: 300px;
+    font-size: 20px;
+    color: #cfcfcf;
+    cursor: pointer;
+    opacity: 0.3;
+}
+#divForm .divInput:hover .xspan {
+    opacity: 1;
+}
+#divForm input[type="radio"] {
+    margin: 8px;
+}
+#divForm input[type="button"] {
+    margin-top: 18px;
+}

@@ -1,0 +1,7 @@
+.q2-11 {
+    display: flex;
+    flex-direction: row;
+}
+.sort-btn {
+    margin-left: 25px;
+}
