@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let number = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        let phone  = '8(914) 373-22-11';
+        let time   = 'Нужно найти - 22:05 при этом не 2234, 22.22 33:223 32,12';
+        let textJS = 'java script - это такой язык';
+        let hesh = '#a9bBc0 #000CDA RGB(25,25,255) rgba(150,150,150) rgb(1, 15, 150)';
+        let langages = 'Java, JavaScript, PHP, C#, C, C+, C++, C+++, C++++';
+
+
+        console.log(number.match(/XYZ/i));
+        console.log(textJS.match( /JAVA(SCRIPT)/i) );
+        console.log(number.replace(/(java) (s) (cript)/,'$3$2$1'));
+        console.log((phone.replace(/\D/g, '')).replace('', ' '), '! Убраны все лишние символы из номера телефона');
+        console.log(time.match(/\b\d\d:\d\d\b/gi)[0], '! Найдено в строке время');
+        console.log('Привет - э.то - этот - самый => Джи.мми Хен.дри.кс'.replace(/[-.>]/g, ''), '! убраны знаки "space", ".", "-"');
+        console.log(hesh.match(/#[a-f0-9]{6}|RGBA?\(\d{1,3}, ?\d{1,3}, ?\d{1,3}/gi), 'Находит CSS цвета');
+        console.log(langages.match(/Java(Script)?|PHP|C#|C(\+)+|C/gi));
+    </script>
+</body>
+</html>
