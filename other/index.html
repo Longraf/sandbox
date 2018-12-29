@@ -1,0 +1,54 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="lesson1-div">
+        <input class="lesson1" type="text"><br>
+        <input class="lesson1" type="text"><br>
+        <input class="lesson1" type="text"><br>
+        <button class="lesson btn" value="btn">Кнопка</button><br>
+        <input class="lesson rezult" type="text" placeholder="Результат">
+    </div>
+    <script>
+        let button = document.querySelector('button');
+        let input  = document.querySelectorAll('.lesson1');
+        let rezult = document.querySelector('.rezult');
+        console.log(button);
+
+        // let list = [34, 1, 529, -78, 89.7, 1243];
+        // let minmax = (arr=>{
+        //     let min = arr[0];
+        //     let max = arr[0];
+        //     for (let i of arr){
+        //         if (i > max)
+        //             max = i;
+        //         if (i < min)
+        //             min = i;
+        //     }
+        //     return [min, max]
+        // });
+        // console.log(minmax(list));
+
+        function summ(arr) {
+            //console.log(arguments)
+            let sum = 0;
+            for (let i of arguments){
+                sum += Number(i);
+            }
+            return sum
+        }
+        console.log(summ(1,2,3,4));
+        button.addEventListener('click', ()=>{
+
+        })
+        const studentsAge = [17, 16, 18, 19, 21, 17];
+    </script>
+</body>
+</html>

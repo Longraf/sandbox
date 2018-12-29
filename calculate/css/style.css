@@ -1,0 +1,39 @@
+.my-calc {
+  margin: 30px auto;
+  width: 300px;
+  height: 250px;
+  background-color: lightgrey;
+  padding: 10px;
+  border-radius: 3%;
+  box-shadow: 0 0 1px 5px darkslategrey; }
+  .my-calc * {
+    margin: 0;
+    padding: 0; }
+  .my-calc .input-filed {
+    padding: 2%;
+    height: 15%; }
+    .my-calc .input-filed input {
+      width: 100%;
+      flex: 1;
+      text-align: end;
+      height: 100%;
+      border-radius: 3%;
+      font-size: 24px; }
+  .my-calc .keys {
+    margin-top: 4%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    height: 75%; }
+    .my-calc .keys .key {
+      text-align: center;
+      margin: 1.5%;
+      background-color: grey;
+      width: 20%;
+      border-radius: 10%;
+      user-select: none;
+      box-shadow: 2px 1px 1px 1px darkslategrey;
+      line-height: 2em; }
+    .my-calc .keys .key:active {
+      transform: translate(3px, 1px);
+      box-shadow: 0 0 0; }
