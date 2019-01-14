@@ -16,25 +16,17 @@
         <button class="lesson btn" value="btn">Кнопка</button><br>
         <input class="lesson rezult" type="text" placeholder="Результат">
     </div>
+    <div class="lesson4">
+        <h3>l4</h3>
+        <input type="text" class="inputLesson4">
+        <p class="lesson4rezult"></p>
+    </div>
     <script>
         let button = document.querySelector('button');
         let input  = document.querySelectorAll('.lesson1');
         let rezult = document.querySelector('.rezult');
         console.log(button);
 
-        // let list = [34, 1, 529, -78, 89.7, 1243];
-        // let minmax = (arr=>{
-        //     let min = arr[0];
-        //     let max = arr[0];
-        //     for (let i of arr){
-        //         if (i > max)
-        //             max = i;
-        //         if (i < min)
-        //             min = i;
-        //     }
-        //     return [min, max]
-        // });
-        // console.log(minmax(list));
 
         function summ(arr) {
             //console.log(arguments)
@@ -49,6 +41,20 @@
 
         })
         const studentsAge = [17, 16, 18, 19, 21, 17];
+
+
+        let lesson4 = document.querySelector('.lesson4'); // TODO lesson4
+        let inputLesson4 = lesson4.querySelector('.inputLesson4');
+        console.log(inputLesson4);
+        inputLesson4.addEventListener('blur', () =>{
+            let value = inputLesson4.value;
+            let arrayValue = value.split(',');
+            console.log(arrayValue);
+            let rez = arrayValue.reduce(function(previous, current){
+                return Number(previous) + Number(current);
+            });
+            console.log(rez/arrayValue.length);
+        });
     </script>
 </body>
 </html>
