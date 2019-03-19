@@ -1,0 +1,16 @@
+.orange{
+    color: #0d6a16;
+    background-color: #e0e0e0;
+    width: 300px;
+    padding: 20px;
+}
+.quiz{
+    padding: 10px;
+}
+.options{
+    display: flex;
+    flex-direction: column;
+}
+.options label{
+    padding: 6px;
+}
