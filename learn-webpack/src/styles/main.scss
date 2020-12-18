@@ -1,0 +1,16 @@
+@import "~normalize-scss/sass/_normalize.scss";
+@import "font.css";
+
+$orange: #ffc70a;
+$font-size: 48px;
+$center: 'center';
+body{
+  background: $orange;
+
+  font-family: 'Langar', sans-serif;
+
+  h1{
+    font-size: $font-size;
+    text-align: $center;
+  }
+}
