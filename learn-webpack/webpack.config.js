@@ -2,6 +2,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require("copy-webpack-plugin");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+let isDev = process.env.NODE_ENV === 'development';
 
 module.exports = {
   context: path.resolve(__dirname, 'src'),
@@ -20,39 +23,58 @@ module.exports = {
     }),
     new CopyPlugin({
       patterns: [
-        { from: "img", to: "img" },
+        { from: path.resolve(__dirname, 'src/img'), to: "img" },
+        { from: path.resolve(__dirname, 'src/favicon.ico'), to: "favicon.ico" },
       ],
     }),
     new CleanWebpackPlugin(),
+    new MiniCssExtractPlugin({
+      filename: "[name][contenthash].css"
+    })
   ],
+  resolve: {
+    extensions: ['.js', '.json'] // Расширения пониманемые по умолчанию
+  },
+  optimization: {
+    splitChunks: {
+      chunks: "all"
+    }
+  },
+  devServer: {
+    port: 4200,
+    hot: isDev
+  },
+  devtool: isDev ? "source-map" : '',
   module: {
     rules: [
       {
         test: /\.scss$/,
         use: [
-          // Creates `style` nodes from JS strings
-          "style-loader",
-          // Translates CSS into CommonJS
-          "css-loader",
-          // Compiles Sass to CSS
-
+          'style-loader',
           {
-            loader: "sass-loader",
+            loader: 'css-loader',
             options: {
-              additionalData: async (content, loaderContext) => {
-                // More information about available properties https://webpack.js.org/api/loaders/
-                const { resourcePath, rootContext } = loaderContext;
-                const relativePath = path.relative(rootContext, resourcePath);
-
-                if (relativePath === "styles/foo.scss") {
-                  return "$value: 100px;" + content;
-                }
-
-                return "$value: 200px;" + content;
-              },
-            },
+              sourceMap: true,
+              url: false,
+            }
           },
-        ],
+          {
+            loader: 'sass-loader',
+            options: { sourceMap: true }
+          }
+        ]
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true
+            }
+          }
+        ]
       },
       {
         test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
@@ -61,6 +83,16 @@ module.exports = {
             loader: 'file-loader',
           }
         ]
+      },
+      {
+        test: /\.m?js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
       }
     ],
   },
